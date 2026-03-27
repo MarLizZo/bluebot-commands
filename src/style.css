@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --neutral-300: #d4d4d8;
+  --neutral-300-opac: #d4d4d48d;
+  --neutral-800: #262626;
+  --neutral-850: #202020;
+  --neutral-900: #171717;
+  --neutral-925: #0e0e0e;
+  --neutral-950: #0a0a0a;
+  --primary-blue: #0d92f4;
+  --secondary-light-blue: #77cdff;
+  --background-main: #191919;
+  --background-secondary: #171717;
+}
+
+html {
+  min-height: 100vh;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 15vh;
+
+  @media screen and (min-width: 768px) {
+    height: 12.5vh;
+  }
+}
+
+footer {
+  height: 9vh;
+
+  @media screen and (min-width: 768px) {
+    height: 7vh;
+  }
+}
+
+header,
+footer {
+  background-color: #101010;
+}
+
+main {
+  background-color: var(--background-main);
+}
+
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  flex-grow: 1;
+  color: var(--neutral-300) !important;
+  letter-spacing: 0.0075em;
+
+  &:has(h1, h2, h3, h4, h5, h6, p) {
+    cursor: default;
+  }
+
+  &::-webkit-scrollbar,
+  .wn-container::-webkit-scrollbar,
+  .lb-container::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+  }
+  &::-webkit-scrollbar-thumb,
+  .wn-container::-webkit-scrollbar-thumb,
+  .lb-container::-webkit-scrollbar-thumb {
+    background: var(--neutral-800);
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track,
+  .wn-container::-webkit-scrollbar-track,
+  .lb-container::-webkit-scrollbar-track {
+    background: var(--neutral-950);
+  }
+}
+
+.sub-btn {
+  height: max-content;
+  transition: 0.3s all;
+  background-color: var(--primary-blue);
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-light-blue);
+  }
+}
+
+.separator {
+  border-width: 3px 0 2px 0;               /* top right bottom left */
+  border-style: solid;                     /* necessario per border-image */
+  border-image-source: linear-gradient(
+    to left,
+    #101010,
+    var(--primary-blue),
+    #101010
+  );
+  border-image-slice: 0 0 100% 0;          /* equivalente al tuo shorthand */
+  border-image-repeat: stretch;            /* stretch per coprire la linea */
+}
+
+.profile-pic {
+  width: 54px;
+  height: 54px;
+
+  @media screen and (min-width: 768px) {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.love-img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.h-custom-48 {
+  height: 48%;
+}
+
+a:not(.sub-btn) {
+  height: max-content;
+}
+
+.sub-btn {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+a {
+  cursor: pointer;
+}
