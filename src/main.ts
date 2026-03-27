@@ -1,5 +1,3 @@
-//import { setupCounter } from './counter.ts'
-
 type ComponentInit = () => Promise<void>;
 
 async function loadComponent(
@@ -15,7 +13,6 @@ async function loadComponent(
     if (!res.ok) throw new Error(`Errore fetch: ${htmlPath}`);
     el.innerHTML = await res.text();
 
-    // inizializza il componente (logica + dati)
     if (init) await init();
   } catch (err) {
     console.error(err);
@@ -32,12 +29,79 @@ async function init() {
   await Promise.all([
     loadComponent("header", "/src/components/header.html"),
     loadComponent("footer", "/src/components/footer.html"),
-    /*loadComponent("common-cmds", "/src/components/common-cmds/common-cmds.html", initCommonCmds),
+    loadComponent("common-cmds", "/src/components/common-cmds/common-cmds.html", initCommonCmds),
     loadComponent("interaction-cmds", "/src/components/interaction-cmds/interaction-cmds.html", initInteractionCmds),
     loadComponent("fish-cmds", "/src/components/fish-cmds/fish-cmds.html", initFishCmds),
     loadComponent("gamba-cmds", "/src/components/gamba-cmds/gamba-cmds.html", initGambaCmds),
-    loadComponent("moderators-cmds", "/src/components/moderators-cmds/moderators-cmds.html", initModeratorsCmds),*/
+    loadComponent("moderators-cmds", "/src/components/moderators-cmds/moderators-cmds.html", initModeratorsCmds),
   ]);
 }
 
 init();
+
+const collapse = (el: HTMLElement) => {
+  // imposta altezza attuale (auto → px)
+  el.style.height = el.scrollHeight + "px";
+
+  requestAnimationFrame(() => {
+    el.style.height = "0px";
+  });
+}
+
+const expand = (el: HTMLElement) => {
+  // da 0 → altezza reale
+  el.style.height = el.scrollHeight + "px";
+
+  el.addEventListener(
+    "transitionend",
+    () => {
+      el.style.height = "auto"; // torna a naturale
+    },
+    { once: true }
+  );
+}
+
+const toggle = (el: HTMLElement) => {
+  const isCollapsed = el.style.height === "0px";
+
+  if (isCollapsed) {
+    expand(el);
+  } else {
+    collapse(el);
+  }
+}
+
+const toggleCollapse = (trigger: string, block: string) => {
+  switch (trigger) {
+    case "coll-icon-common":
+      document.getElementById("coll-icon-common")?.classList.toggle("rotated");
+      const element : HTMLElement = document.getElementById(block)!;
+      toggle(element);
+      break;
+    case "coll-icon-interaction":
+      document.getElementById("coll-icon-interaction")?.classList.toggle("rotated");
+      break;
+    case "coll-icon-fish":
+        document.getElementById("coll-icon-fish")?.classList.toggle("rotated");
+      break;
+    case "coll-icon-gamba":
+      document.getElementById("coll-icon-gamba")?.classList.toggle("rotated");
+      break;
+    case "coll-icon-moderators":
+      document.getElementById("coll-icon-moderators")?.classList.toggle("rotated");
+      break;
+    default:
+      break;
+  }
+}
+const copyToClipboard = (cmd: string, element: HTMLElement) => {
+  navigator.clipboard.writeText(cmd).then(() => {
+    console.log("copying.. ", cmd); 
+    element.classList.add("text-blue-400");
+    setTimeout(() => {
+      element.classList.remove("text-blue-400");
+    }, 1000);
+  });
+}
+(window as any).toggleCollapse = toggleCollapse;
+(window as any).copyToClipboard = copyToClipboard;
