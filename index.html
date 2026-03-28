@@ -10,12 +10,15 @@
   </head>
   <body class="bg-neutral-900 text-gray-200 flex flex-col">
     <header id="header" class="py-2 px-4 rounded-b-md flex w-full h-full"></header>
-    <main id="main" class="flex flex-col grow py-8 px-6 sm:px-8 md:px-16 items-center">
-      <div id="common-cmds" class="w-full"></div>
-      <div id="interaction-cmds" class="w-full mt-14"></div>
-      <div id="fish-cmds" class="w-full mt-14"></div>
-      <div id="gamba-cmds" class="w-full mt-14"></div>
-      <div id="moderators-cmds" class="w-full mt-14"></div>
+    <main id="main" class="flex flex-col grow py-8 px-6 sm:px-8 md:px-16 items-center justify-center">
+      <div id="loader" class="flex justify-center items-center w-full h-full"></div>
+      <div id="app" class="w-full items-center hidden">
+        <div id="common-cmds" class="w-full"></div>
+        <div id="interaction-cmds" class="w-full mt-14"></div>
+        <div id="fish-cmds" class="w-full mt-14"></div>
+        <div id="gamba-cmds" class="w-full mt-14"></div>
+        <div id="moderators-cmds" class="w-full mt-14"></div>
+      </div>
     </main>
     <footer id="footer" class="py-2 px-4 rounded-t-md flex w-full h-full"></footer>
     <script type="module" src="src/main.ts"></script>

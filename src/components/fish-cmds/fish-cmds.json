@@ -1,3 +1,23 @@
-{
-    
-}
+[
+    {
+        "id": 1,
+        "view_order": 1,
+        "command": "!fish",
+        "description": "Fishing time! Cast your line and see what you catch",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 2,
+        "view_order": 2,
+        "command": "!fish stats",
+        "description": "Take a look at your own stats",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 3,
+        "view_order": 3,
+        "command": "!fish top",
+        "description": "The Top 3 of fishermen in the channel",
+        "permissions": "Everyone"
+      }
+]

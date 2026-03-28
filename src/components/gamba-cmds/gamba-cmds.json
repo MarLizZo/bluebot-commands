@@ -1,3 +1,39 @@
-{
-    
-}
+[
+    {
+        "id": 1,
+        "view_order": 1,
+        "command": "!gamble",
+        "description": "Gamble your life away, don't ask me for money",
+        "synthax": "!gamble <amount>",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 2,
+        "view_order": 2,
+        "command": "!points",
+        "description": "Get your current amount of points and leaderboard position",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 3,
+        "view_order": 3,
+        "command": "!givepoints",
+        "description": "Give some of your points to another user",
+        "synthax": "!givepoints @user <amount>",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 4,
+        "view_order": 4,
+        "command": "!top points",
+        "description": "Shows who are the 5 richest ones in the channel",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 5,
+        "view_order": 5,
+        "command": "!top alltime",
+        "description": "Shows who's in the Top 5 hall of fame",
+        "permissions": "Everyone"
+      }
+]

@@ -2,4 +2,17 @@
     <h2 class="w-full text-left text-xl md:text-2xl font-medium mb-5 title" id="cmds-group-gamba">
         > Gamba commands
     </h2>
+    <div class="flex t-head w-full">
+        <div class="w-3/12 md:w-2/12 flex items-center">Command</div>
+        <div class="w-3/12 flex items-center">Permission</div>
+        <div class="w-6/12 md:w-7/12 flex items-center justify-between">
+            <p>Response</p>
+            <i id="coll-icon-gamba" class="bi text-xl bi-arrow-bar-up transition-all cursor-pointer"
+                onclick="toggleCollapse('coll-icon-gamba', 'gamba-cmds-container')"></i>
+        </div>
+    </div>
+
+    <div id="gamba-cmds-container" class="flex flex-col t-body w-full collapsible">
+        
+    </div>
 </div>
