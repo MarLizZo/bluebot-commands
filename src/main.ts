@@ -1,50 +1,62 @@
-type ComponentInit = () => Promise<void>;
+import header from "./components/header.html?raw";
+import footer from "./components/footer.html?raw";
+import loader from "./components/loader.html?raw";
+import commoncmd from "./components/common-cmds/common-cmds.html?raw";
+import interactionscmd from "./components/interaction-cmds/interaction-cmds.html?raw";
+import fishcmd from "./components/fish-cmds/fish-cmds.html?raw";
+import gambacmd from "./components/gamba-cmds/gamba-cmds.html?raw";
+import moderatorscmd from "./components/moderators-cmds/moderators-cmds.html?raw";
 
-async function loadComponent(
-  id: string,
-  htmlPath: string,
-  init?: ComponentInit
-): Promise<void> {
+const components = {
+  commonCmds: () => import("./components/common-cmds/common-cmds"), 
+  interactionCmds: () => import("./components/interaction-cmds/interaction-cmds"), 
+  fishCmds: () => import("./components/fish-cmds/fish-cmds"), 
+  gambaCmds: () => import("./components/gamba-cmds/gamba-cmds"), 
+  moderatorsCmds: () => import("./components/moderators-cmds/moderators-cmds")
+};
+
+const sprayHtml = (id: string, html: string) => {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (el) el.innerHTML = html;
+};
 
-  try {
-    const res = await fetch(htmlPath);
-    if (!res.ok) throw new Error(`Errore fetch: ${htmlPath}`);
-    el.innerHTML = await res.text();
-
-    if (init) await init();
-  } catch (err) {
-    console.error(err);
-  }
+const loadStatic = () => {
+  sprayHtml("header", header);
+  sprayHtml("footer", footer);
+  sprayHtml("loader", loader);
+  sprayHtml("common-cmds", commoncmd);
+  sprayHtml("interaction-cmds", interactionscmd);
+  sprayHtml("fish-cmds", fishcmd);
+  sprayHtml("gamba-cmds", gambacmd);
+  sprayHtml("moderators-cmds", moderatorscmd);
 }
 
-import { initCommonCmds } from "./components/common-cmds/common-cmds";
-import { initFishCmds } from "./components/fish-cmds/fish-cmds";
-import { initInteractionCmds } from "./components/interaction-cmds/interaction-cmds";
-import { initGambaCmds } from "./components/gamba-cmds/gamba-cmds";
-import { initModeratorsCmds } from "./components/moderators-cmds/moderators-cmds";
+const loadComponents = async () => {
+  const common = await components.commonCmds();
+  common.initCommonCmds();
+  const interaction = await components.interactionCmds();
+  interaction.initInteractionCmds();
+  const fish = await components.fishCmds();
+  fish.initFishCmds();
+  const gamba = await components.gambaCmds();
+  gamba.initGambaCmds();
+  const moderators = await components.moderatorsCmds();
+  moderators.initModeratorsCmds();
+};
 
-async function init() {
-  await Promise.all([
-    loadComponent("header", "/src/components/header.html"),
-    loadComponent("footer", "/src/components/footer.html"),
-    loadComponent("loader", "/src/components/loader.html"),
-    loadComponent("common-cmds", "/src/components/common-cmds/common-cmds.html", initCommonCmds),
-    loadComponent("interaction-cmds", "/src/components/interaction-cmds/interaction-cmds.html", initInteractionCmds),
-    loadComponent("fish-cmds", "/src/components/fish-cmds/fish-cmds.html", initFishCmds),
-    loadComponent("gamba-cmds", "/src/components/gamba-cmds/gamba-cmds.html", initGambaCmds),
-    loadComponent("moderators-cmds", "/src/components/moderators-cmds/moderators-cmds.html", initModeratorsCmds),
-  ]).then(() => {
+const init = async () => {
+  loadStatic();
+  await loadComponents();
+}
+
+init().then(() => {
     setTimeout(() => {
       const loader = document.getElementById("loader");
       const app = document.getElementById("app");
       loader?.classList.add("hidden");
       app?.classList.remove("hidden");
     }, 1500)});
-}
 
-init();
 
 const collapse = (el: HTMLElement) => {
   el.style.height = el.scrollHeight + "px";

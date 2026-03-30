@@ -2,8 +2,8 @@ import type { CommandItem } from "../../commands-interface";
 
 export async function initInteractionCmds(): Promise<void> {
   try {
-    const res = await fetch("/src/components/interaction-cmds/interaction-cmds.json");
-    if (!res.ok) throw new Error("Errore JSON interaction-cmds");
+    const res = await fetch("./interaction-cmds.json");
+    if (!res.ok) throw new Error("Error JSON interaction-cmds");
 
     const data: CommandItem[] = await res.json();
 

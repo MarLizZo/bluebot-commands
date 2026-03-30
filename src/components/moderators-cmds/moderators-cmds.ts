@@ -2,8 +2,8 @@ import type { CommandItem } from "../../commands-interface";
 
 export async function initModeratorsCmds(): Promise<void> {
   try {
-    const res = await fetch("/src/components/moderators-cmds/moderators-cmds.json");
-    if (!res.ok) throw new Error("Errore JSON moderators-cmds");
+    const res = await fetch("./moderators-cmds.json");
+    if (!res.ok) throw new Error("Error JSON moderators-cmds");
 
     const data: CommandItem[] = await res.json();
 

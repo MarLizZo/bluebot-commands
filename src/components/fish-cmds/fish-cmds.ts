@@ -2,8 +2,8 @@ import type { CommandItem } from "../../commands-interface";
 
 export async function initFishCmds(): Promise<void> {
   try {
-    const res = await fetch("/src/components/fish-cmds/fish-cmds.json");
-    if (!res.ok) throw new Error("Errore JSON fish-cmds");
+    const res = await fetch("./fish-cmds.json");
+    if (!res.ok) throw new Error("Error JSON fish-cmds");
 
     const data: CommandItem[] = await res.json();
 

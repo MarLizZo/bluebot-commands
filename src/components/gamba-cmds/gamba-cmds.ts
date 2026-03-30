@@ -2,8 +2,8 @@ import type { CommandItem } from "../../commands-interface";
 
 export async function initGambaCmds(): Promise<void> {
   try {
-    const res = await fetch("/src/components/gamba-cmds/gamba-cmds.json");
-    if (!res.ok) throw new Error("Errore JSON gamba-cmds");
+    const res = await fetch("./gamba-cmds.json");
+    if (!res.ok) throw new Error("Error JSON gamba-cmds");
 
     const data: CommandItem[] = await res.json();
 

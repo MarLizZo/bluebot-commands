@@ -2,8 +2,8 @@ import type { CommandItem } from "../../commands-interface";
 
 export async function initCommonCmds(): Promise<void> {
   try {
-    const res = await fetch("/src/components/common-cmds/common-cmds.json");
-    if (!res.ok) throw new Error("Errore JSON common-cmds");
+    const res = await fetch("./common-cmds.json");
+    if (!res.ok) throw new Error("Error JSON common-cmds");
 
     const data: CommandItem[] = await res.json();
 
