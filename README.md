@@ -3,3 +3,4 @@ This project is a custom alternative to the original StreamElements bot commands
 
 <hr>
 This webpage has been developed using Vite, tailwindcss, typescript
+<hr>
