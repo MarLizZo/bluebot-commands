@@ -5,4 +5,5 @@ export interface CommandItem {
     description: string;
     permissions: string;
     synthax?: string;
+    aliases?: string[]
 }

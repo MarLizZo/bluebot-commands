@@ -3,9 +3,10 @@
         "id": 1,
         "view_order": 1,
         "command": "!gamble",
-        "description": "Gamble your life away, don't ask me for money",
+        "description": "Gamble your life away, but don't ask me money",
         "synthax": "!gamble <amount>",
-        "permissions": "Everyone"
+        "permissions": "Everyone",
+        "aliases": ["!gamba", "!slots"]
       },
       {
         "id": 2,

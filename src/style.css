@@ -136,7 +136,7 @@ a {
 }
 
 .t-head div,
-.t-body div {
+.t-body div:not(.synth-container) {
   padding-left: 0.3rem !important;
   padding-right: 0.3rem !important;
   padding-top: 0.5rem !important;
