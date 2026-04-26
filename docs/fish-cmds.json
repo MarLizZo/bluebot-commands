@@ -4,7 +4,8 @@
         "view_order": 1,
         "command": "!fish",
         "description": "Fishing time! Cast your line and see what you catch",
-        "permissions": "Everyone"
+        "permissions": "Everyone",
+        "aliases": ["!fishh"]
       },
       {
         "id": 2,

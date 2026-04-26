@@ -5,7 +5,8 @@
         "command": "!love",
         "description": "Shows the amount of love between two users",
         "synthax": "!love @user",
-        "permissions": "Everyone"
+        "permissions": "Everyone",
+        "aliases": ["!luv"]
       },
       {
         "id": 2,
@@ -73,9 +74,9 @@
       {
         "id": 10,
         "view_order": 10,
-        "command": "!kissfeet",
+        "command": "!feet",
         "description": "Force them to kiss your feet, they will not say no",
-        "synthax": "!kissfeet @user",
+        "synthax": "!feet @user",
         "permissions": "Everyone"
       },
       {
@@ -92,6 +93,14 @@
         "command": "!blessing",
         "description": "Wish them the best of the luck",
         "synthax": "!blessing @user",
+        "permissions": "Everyone"
+      },
+      {
+        "id": 13,
+        "view_order": 13,
+        "command": "!kiss",
+        "description": "Send a virtual kiss",
+        "synthax": "!kiss @user",
         "permissions": "Everyone"
       }
 ]
